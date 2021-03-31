@@ -11,7 +11,12 @@ public class FactoryPattern
 
         person = PersonFactory.getPerson("ProgressionRun");
         person.run();
-        person = PersonFactory.getPerson("lala");
+
+        try{person = PersonFactory.getPerson("lala");
+        }
+        catch (NoSuchMethodException e){
+            System.err.println(e);
+        }
     }
 }
 
