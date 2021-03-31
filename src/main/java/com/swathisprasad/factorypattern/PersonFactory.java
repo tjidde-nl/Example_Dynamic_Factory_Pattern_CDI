@@ -2,17 +2,12 @@ package com.swathisprasad.factorypattern;
 
 public class PersonFactory {
 
-    public static Person getPerson(String type)
-    {
-        if ("BaseRun".equals(type)) {
-            return new ConcretePersonA();
+    public static Person getPerson(String type) throws NoSuchMethodException {
+        switch (type){
+            case "BaseRun": return new ConcretePersonA();
+            case "LongRun": return new ConcretePersonB();
+            case "ProgressionRun": return new ConcretePersonC();
+            default: throw new NoSuchMethodException("Person not found");
         }
-        else if ("LongRun".equals(type) ) {
-            return new ConcretePersonB();
-        }
-        else if ("ProgressionRun".equals(type) ) {
-            return new ConcretePersonC();
-        }
-        return null;
     }
 }
