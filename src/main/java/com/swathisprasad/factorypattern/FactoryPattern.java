@@ -1,22 +1,17 @@
 package com.swathisprasad.factorypattern;
 
+
+import org.jboss.weld.environment.se.Weld;
+import org.jboss.weld.environment.se.WeldContainer;
+
 public class FactoryPattern
 {
-    public static void main( String[] args ) throws NoSuchMethodException {
-        Person person = PersonFactory.getPerson("BaseRun");
-        person.run();
-
-        person = PersonFactory.getPerson("LongRun");
-        person.run();
-
-        person = PersonFactory.getPerson("ProgressionRun");
-        person.run();
-
-        try{person = PersonFactory.getPerson("lala");
+    public static void main(String[] args) {
+        Weld weld = new Weld();
+        try (WeldContainer weldContainer = weld.initialize()) {
+            weldContainer.select(getOutOfStatic.class).get().doEveryThing();
         }
-        catch (NoSuchMethodException e){
-            System.err.println(e);
-        }
+
     }
 }
 
