@@ -9,7 +9,7 @@ public class FactoryPattern
     public static void main(String[] args) {
         Weld weld = new Weld();
         try (WeldContainer weldContainer = weld.initialize()) {
-            weldContainer.select(getOutOfStatic.class).get().doEveryThing();
+            weldContainer.select(ConsoleClient.class).get().doEveryThing();
         }
 
     }
